@@ -38,6 +38,12 @@ namespace CRUDapi.Entities
             Product p = SearchProducById(codigo);
             p.SetInactive();
         }
+
+        public void SetProductActive(int codigo)
+        {
+            Product p = SearchProducById(codigo);
+            p.SetActive();
+        }
     }
 }
 
