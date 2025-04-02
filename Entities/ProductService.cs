@@ -33,16 +33,23 @@ namespace CRUDapi.Entities
             return p;
         }
 
-        public void SetProductInactive(int codigo)
+        public void SetProductInactive(int id)
         {
-            Product p = SearchProducById(codigo);
+            Product p = SearchProducById(id);
             p.SetInactive();
         }
 
-        public void SetProductActive(int codigo)
+        public void SetProductActive(int id)
         {
-            Product p = SearchProducById(codigo);
+            Product p = SearchProducById(id);
             p.SetActive();
+        }
+
+        public void UpdateDescription(int id, string description)
+        {
+            Product p = SearchProducById(id);
+            p.Update(description);
+
         }
     }
 }

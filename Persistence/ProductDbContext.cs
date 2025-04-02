@@ -4,7 +4,7 @@ namespace CRUDapi.Persistence
 {
     public class ProductDbContext
     {
-        public List<Product> Products { get; set; }
+        public List<Product> Products { get; set; }        
 
         public ProductDbContext()
         {

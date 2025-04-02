@@ -10,22 +10,17 @@ namespace CRUDapi.Controllers
     [ApiController]
     public class ProductServiceController : ControllerBase
     {
-        private readonly ProductDbContext _context;
+        private readonly ProductService _productService;
 
-        public ProductServiceController(ProductDbContext context)
+        public ProductServiceController(ProductService productService)
         {
-            _context = context;
+            _productService = productService;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var products = _context.Products;
-
-
-
-            return Ok(products);
-
+            return Ok(_productService.ListProducts());
         }
 
         [HttpGet("{id}")]
@@ -34,7 +29,7 @@ namespace CRUDapi.Controllers
         {
             try
             {
-                var product = _context.Products.Where(p => p.Id == id);
+                var product = _productService.SearchProducById(id);
 
                 return Ok(product);
             }
@@ -47,9 +42,21 @@ namespace CRUDapi.Controllers
         [HttpPost]
         public IActionResult Post(Product product)
         {
-            _context.Products.Add(product);
+            var product = _productService.AddProduct(product);
 
-            return CreatedAtAction(nameof(GetById), new {id = _context.Products.;
+            return Created();
+        }
+
+        [HttpPut]
+        public IActionResult Put(int id, string description) {
+
+            var product = _productService.SearchProducById(id);
+
+            product.Update(description);
+
+            return Ok();
+
         }
     }
+}
 

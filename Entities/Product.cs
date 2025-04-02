@@ -51,6 +51,18 @@ namespace CRUDapi.Entities
         {
             IsActive = true;
         }
+
+        public void Update(string description)
+        {
+            if (description == null)
+            {
+                throw new DomainException("Descripton must not be null");
+            }
+            else
+            {
+                Description = description;
+            }
+        }
     }
 }
 
