@@ -39,13 +39,13 @@ namespace CRUDapi.Controllers
             }
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public IActionResult Post(Product product)
         {
-            var product = _productService.AddProduct(product);
+            var p = _productService.AddProduct(p);
 
             return Created();
-        }
+        }*/
 
         [HttpPut]
         public IActionResult Put(int id, string description) {
